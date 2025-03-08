@@ -72,7 +72,7 @@ if (idade >= 18) {
 
 if (idade >= 18) {
   console.log("Maior de idade")
-} else if(idade < 18) {
+} else if (idade < 18) {
   console.log("Menor de idade")
 } else {
   console.log("Valor inválido")
@@ -82,4 +82,72 @@ if (idade >= 18) {
 // Operador ternário
 const checkMaiorDeIdade = idade >= 18 ? "Maior de idade" : "Menor de idade";
 console.log(checkMaiorDeIdade)
+
+// Arrays
+
+let frutas = ["Maçã", "Banana", "Uva"]
+console.log(frutas[0])
+console.log(frutas[1])
+console.log(frutas[5])
+console.log(frutas.length)
+
+frutas.push("Laranja")
+
+frutas.forEach((fruta) => {
+  console.log(fruta)
+})
+
+frutas.pop()
+console.log(frutas)
+
+// Objetos
+let pessoa = {
+  nome: "Gustavo",
+  idade: 30,
+  altura: 170,
+  peso: 80
+}
+// Adiciona um novo atributo (propriedade) ao objeto
+pessoa.email = "gustavo@g.com"
+console.log(pessoa)
+// Remove um atributo
+delete pessoa.email;
+console.log(pessoa)
+
+// Desestruturar o objeto pessoa
+let { altura, peso } = pessoa
+console.log(altura)
+console.log(peso)
+
+// Propagação de objetos
+let endereco = {
+  cidade: "Ceilândia",
+  uf: "DF"
+}
+
+let pessoaCompleto = { ...pessoa, ...endereco }
+console.log(pessoaCompleto)
+
+// Função
+function somar(numA, numB) {
+  return numA + numB
+}
+console.log(somar(2, 2))
+console.log(somar(10, 2))
+console.log(somar(5, 5))
+
+function saudacao(nome) {
+  console.log("Olá " + nome)
+}
+saudacao("Gustavo")
+
+// Função anônima
+let subtrair = function (numA, numB) {
+  return numA - numB
+}
+console.log(subtrair(4, 2))
+
+// Arrow function
+let multiplicar = (numA, numB) => numA * numB
+console.log(multiplicar(2, 10))
 
