@@ -1,5 +1,5 @@
 // Modulos ES6 -> Importando
-import {TabelaIMC, calcularIMC} from "./CalculadoraIMC"
+import {TabelaIMC, calcularIMC} from "./CalculadoraIMC.js"
 
 console.log("Calculo do IMC")
 
