@@ -42,6 +42,8 @@ export default function App() {
       <View style={styles.container}>
         <StatusBar style="auto" />
 
+        <Text style={styles.header}>Lista de Atletas</Text>
+
         {
           listaJogadores.map(
             jogador => {
@@ -68,4 +70,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff'
   },
+  header: {
+    backgroundColor: 'red',
+    fontSize: 30,
+    fontWeight: 600,
+    textAlign: 'center',
+    paddingTop: 30
+  }
 });
