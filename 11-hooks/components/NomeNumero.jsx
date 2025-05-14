@@ -32,7 +32,6 @@ export default function NomeNumero() {
           <Button onPress={alterarNome}>Alterar Nome</Button>
         </Card.Actions>
       </Card>
-
     </View>
   )
 }
