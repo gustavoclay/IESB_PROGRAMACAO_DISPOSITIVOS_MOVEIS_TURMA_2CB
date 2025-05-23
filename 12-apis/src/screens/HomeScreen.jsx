@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { FlatList, StyleSheet, View } from 'react-native'
-import { Avatar, Card, IconButton } from 'react-native-paper'
+import { Avatar, Card, IconButton, Text, ActivityIndicator, MD2Colors } from 'react-native-paper'
 
 export default function HomeScreen({ navigation, route }) {
 
@@ -12,7 +12,7 @@ export default function HomeScreen({ navigation, route }) {
     // Tudo que eu quero fazer quando o usuário entrar na tela
     // vai aqui dentro
     // Fazer uma requisição para buscar a lista de usuários
-    axios.get('https://dummyjson.com/users')
+    axios.get('https://dummyjson.com/users?delay=5000')
       .then(resposta => {
         console.log(resposta.data.users)
         setUsuarios(resposta.data.users)
@@ -42,6 +42,13 @@ export default function HomeScreen({ navigation, route }) {
             />
           </Card>
         )}
+        ListEmptyComponent={() => (
+          <View style={styles.loadingContainer}>
+            <ActivityIndicator animating={true} color={MD2Colors.red800} size={100} />
+            <Text variant='titleLarge'>Carregando...</Text>
+          </View>
+        )}
+
       />
 
     </View>
@@ -54,4 +61,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     justifyContent: 'center',
   },
+  loadingContainer: {
+    height: 750,
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
 })
