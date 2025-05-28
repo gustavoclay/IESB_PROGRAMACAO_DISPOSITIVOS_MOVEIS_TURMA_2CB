@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { Button, Text, TextInput } from 'react-native-paper'
+import { TextInputMask } from 'react-native-masked-text'
 
 export default function AlunoForm() {
 
@@ -19,7 +20,12 @@ export default function AlunoForm() {
       dataNascimento
     }
 
-    alert(JSON.stringify(aluno))
+    if (!aluno.nome || !aluno.cpf || !aluno.email || !aluno.dataNascimento || !aluno.telefone) {
+      alert('Preencha todos os campos!')
+    } else {
+      // gravo o aluno
+
+    }
   }
 
 
@@ -44,6 +50,12 @@ export default function AlunoForm() {
         value={cpf}
         onChangeText={setCpf}
         keyboardType='decimal-pad'
+        render={(props) => (
+          <TextInputMask 
+            {...props}
+            type={'cpf'}
+          />
+        )}
       />
 
       <TextInput
@@ -64,6 +76,17 @@ export default function AlunoForm() {
         value={telefone}
         onChangeText={setTelefone}
         keyboardType='numeric'
+        render={(props) => (
+          <TextInputMask
+            {...props}
+            type={'cel-phone'}
+            options={{
+              maskType: 'BRL',
+              withDDD: true,
+              dddMask: '(99)'
+            }}
+          />
+        )}
       />
 
       <TextInput
@@ -74,6 +97,15 @@ export default function AlunoForm() {
         value={dataNascimento}
         onChangeText={setDataNascimento}
         keyboardType='numeric'
+        render={(props) => (
+          <TextInputMask
+            {...props}
+             type={'datetime'}
+             options={{
+              format: 'DD/MM/YYYY'
+             }} 
+          />
+        )}
       />
 
       <Button
