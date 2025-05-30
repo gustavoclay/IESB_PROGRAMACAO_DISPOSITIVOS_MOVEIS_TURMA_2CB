@@ -1,28 +1,20 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FlatList, StyleSheet, View } from 'react-native'
 import { Button, Card, Text } from 'react-native-paper'
+import AlunoService from './AlunoService'
 
 export default function AlunoLista({ navigation, route }) {
 
-  const [alunos, setAlunos] = useState([
-    {
-      id: '1',
-      nome: "Teste",
-      cpf: "0010010101",
-      email: "teste@t.com",
-      dataNascimento: "02/02/2000",
-      telefone: "(61)90000-0001"
-    },
-    {
-      id: '2',
-      nome: "Teste",
-      cpf: "0010010101",
-      email: "teste@t.com",
-      dataNascimento: "02/02/2000",
-      telefone: "(61)90000-0001"
-    }
-  ])
+  const [alunos, setAlunos] = useState([])
 
+  useEffect(() => {
+    buscarAlunos()
+  }, [])
+
+  async function buscarAlunos() {
+    const listaAlunos = await AlunoService.listar()
+    setAlunos(listaAlunos)
+  }
 
   return (
     <View>
@@ -46,8 +38,8 @@ export default function AlunoLista({ navigation, route }) {
               <Text>Email: {item.email}</Text>
             </Card.Content>
             <Card.Actions>
-              <Button>Editar</Button>
-              <Button>Excluir</Button>
+              <Button icon='pencil'> </Button>
+              <Button icon='delete'> </Button>
             </Card.Actions>
           </Card>
         )}
