@@ -44,7 +44,7 @@ export default function AlunoLista({ navigation, route }) {
               <Text>Email: {item.email}</Text>
             </Card.Content>
             <Card.Actions>
-              <Button icon='pencil'> </Button>
+              <Button icon='pencil' onPress={() => navigation.navigate('AlunoForm', item)}> </Button>
               <Button icon='delete' onPress={() => removerAluno(item.id)}> </Button>
             </Card.Actions>
           </Card>
